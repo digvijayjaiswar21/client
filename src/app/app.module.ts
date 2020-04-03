@@ -27,8 +27,7 @@ import { PagesModule } from './pages/pages.module';
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
-    RegistrationsModule,
-    PagesModule
+    RegistrationsModule
   ],
   bootstrap: [AppComponent]
 })
