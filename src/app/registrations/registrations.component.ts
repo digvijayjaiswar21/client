@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterApi } from 'src/api/register.api';
-import { map } from "rxjs/operators"; 
-import { of } from 'rxjs';
 import {AuthService} from '../shared/auth.service';
-import {passwordValidator} from '../../validators/validators';
  
 
 @Component({
@@ -46,7 +43,7 @@ export class RegistrationsComponent implements OnInit {
   const values = this.registerForm.value;
    
   const payload = {
-   username : values.usernameCtrl,
+   email : values.usernameCtrl,
    password : values.passwordCtrl
 }
 
@@ -54,11 +51,6 @@ export class RegistrationsComponent implements OnInit {
   .subscribe((data:Response)=> {
      this.auth.setToken(data['token']);
   });
-  
- }
 
-
-
-
-
+}
 }

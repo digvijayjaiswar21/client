@@ -71,11 +71,8 @@ registrationFormValues(){
         })
       }
   });
-
- 
-   }
-   
-   })
+ }
+})
  }
 }
 

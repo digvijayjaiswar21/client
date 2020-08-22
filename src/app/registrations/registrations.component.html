@@ -15,7 +15,7 @@
                 <mat-form-field class="col-lg-12" appearance="outline">
                         <mat-label>Enter your password</mat-label>
                         <mat-icon matPrefix class="mat-colour">vpn_key</mat-icon>
-                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordCtrl">
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordCtrl" placeholder="Enter your password">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon class="mat-colour">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
@@ -24,8 +24,8 @@
                            </mat-error>
                       </mat-form-field>
             </div>
-             <p class="mat-register">Click here to <a  [routerLink]="['login']">register</a></p>
-            <button  class="mat-button" mat-stroked-button >Login</button>
+             <p class="mat-register">Click here to <a  [routerLink]="['login']">Register</a></p>
+            <button  class="mat-button" mat-raised-button color="primary" >Sign In</button>
       </div>
     </form>
     </mat-card>

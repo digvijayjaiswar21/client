@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 storageKey:string = 'userToken';
+loggedIn = false;
+
 
   constructor() { }
 
@@ -16,8 +18,6 @@ storageKey:string = 'userToken';
   getToken(){
     return localStorage.getItem(this.storageKey);
   }
-
- 
 
   isLoggedIn(){
    return this.getToken() !== null;
