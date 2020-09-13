@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterApi } from 'src/api/register.api';
 import {AuthService} from '../shared/auth.service';
+import { Router } from '@angular/router';
  
 
 @Component({
@@ -14,9 +15,11 @@ export class RegistrationsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private registrationApi :RegisterApi,
-              private auth :AuthService) { 
-    this.register();
-  }
+              private router :Router,
+              private auth :AuthService)
+               { 
+                       this.register();
+               }
 
   ngOnInit() {}
 
@@ -48,8 +51,13 @@ export class RegistrationsComponent implements OnInit {
 }
 
   this.registrationApi.getUser(payload)
-  .subscribe((data:Response)=> {
+  .subscribe(
+  (data)=> {
      this.auth.setToken(data['token']);
+     this.router.navigate(['/pages/dashboard']);
+  },
+  (err)=>{
+   console.error(JSON.stringify(err)); 
   });
 
 }

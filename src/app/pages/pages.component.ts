@@ -2,21 +2,21 @@ import { OnInit, Component } from '@angular/core';
 
 @Component({
     selector: 'app-pages',
-    template:`<mat-sidenav-container fullscreen>
+    template:`<mat-sidenav-container  [class.m2app-dark]="true" fullscreen>
 
-    <mat-sidenav #start (click)="start.close()">
+    <mat-sidenav #start mode="over" class="app-sidenav" color="primary" (click)="start.close()">
         <mat-nav-list>
   
-            <a mat-list-item routerLink="/">
+            <a mat-list-item routerLink="./dashboard">
                 <mat-icon>library_books</mat-icon>
                 <span>Dashboard</span>
             </a>
   
-            <a mat-list-item routerLink="about">
+            <a mat-list-item routerLink="./course">
                 <mat-icon>question_answer</mat-icon>
                 <span>Courses</span>
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="assign">
                 <mat-icon>person_add</mat-icon>
                 <span>Assignments</span>
             </a>

@@ -12,6 +12,8 @@ import { RegistrationsRoutingModule } from './registrations-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from '../shared/api.service';
 import { AuthService } from '../shared/auth.service';
+import { AuthInterceptor } from '../_helper/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [RegistrationsComponent, LoginComponent],
   imports: [
@@ -30,7 +32,9 @@ import { AuthService } from '../shared/auth.service';
     RegistrationsRoutingModule
   ],
   providers: [ApiService,
-              AuthService],
+              AuthService,
+            {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+          ],
   exports:[
     MatInputModule,
     MatIconModule,

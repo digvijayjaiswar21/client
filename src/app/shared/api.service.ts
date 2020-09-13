@@ -35,7 +35,7 @@ export class ApiService {
   request(url:string,method :RequestMethod,body?: Object ){
      const headers = new Headers();
      headers.append('Content-type','application/json');
-     headers.append('Authorization',`Bearer ${this.auth.getToken()}`);
+     headers.append('x-auth-token',`${this.auth.getToken()}`);
       const requestOptions = new RequestOptions({
         url:`${this.baseURL}/${this.api}/${url}`,
         method:method,

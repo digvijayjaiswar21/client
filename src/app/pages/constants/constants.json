@@ -1,0 +1,10 @@
+{
+
+    "common":{
+        "admin":{
+        "TITLE":"Add course details",
+        "COURSE_NAME":"Course name",
+        "COURSE_DESC":"Course Description"
+        }
+    }
+}
