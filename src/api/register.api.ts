@@ -18,6 +18,7 @@ import {
   Observable,
   throwError
 } from 'rxjs';
+import { Course } from 'src/app/shared/models/course';
 
 
 @Injectable({
@@ -32,7 +33,8 @@ export class RegisterApi {
     return this.api.post(`auth`, item).
     pipe(map((response: Response) => {
       return response.json();
-    }));
+      })
+     );
     }
     catch(err){
     this.handleError(err);
@@ -45,7 +47,8 @@ export class RegisterApi {
       return this.api.get(`users/me`).
       pipe(map((response: Response) => {
         return response.json();
-      }));
+       })
+      );
     } catch (error) {
       this.handleError(error);
     }
@@ -56,13 +59,25 @@ export class RegisterApi {
       return this.api.post(`users`, item).
       pipe(map((response: any) => {
         return response.json();
-      }));
+       })
+      );
     } catch (error) {
       this.handleError(error);
     }
   }
 
-
+  createCourse(params):Observable<Course>{
+    try {
+      return this.api.post(`course/createCourse`, params).
+      pipe(map((response: any) => {
+        return response.json();
+       })
+      );
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+ 
 
   handleError(error) {
     let errorMessage = '';

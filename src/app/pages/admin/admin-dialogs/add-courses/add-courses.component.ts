@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import constant from '../../../constants/constants.json';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/shared/api.service.js';
+import { RegisterApi } from 'src/api/register.api.js';
 @Component({
   selector: 'app-add-course',
  templateUrl:'./add-courses.component.html' ,
@@ -16,6 +18,7 @@ courseForm:FormGroup;
 
   constructor(public dialogRef: MatDialogRef<AddCourseComponent>,
               private formBuilder: FormBuilder,
+              private api : RegisterApi,
               @Inject(MAT_DIALOG_DATA) public data: AddCourse) {
                 this.title = data.title;
                 this.message = data.message;
@@ -28,14 +31,17 @@ courseForm:FormGroup;
   
   public courseFormDetails():void{
     this.courseForm = this.formBuilder.group({
-      courseNameCtrl : [''],
-      courseDescCtrl:['']
+      courseName : [''],
+      courseDescription:['']
     }) 
   }
 
 
   public courseDetails():void{
-    console.log('aaaa ',this.courseForm.value);
+    this.api.createCourse(this.courseForm.value)
+    .subscribe( response =>{
+     console.log(response);
+    })
     this.dialogRef.close();
   }
  
