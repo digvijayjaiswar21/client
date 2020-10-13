@@ -3,7 +3,9 @@ import { RegisterApi } from 'src/api/register.api';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AddCourseComponent, AddCourse } from '../admin/admin-dialogs/add-courses/add-courses.component';
+import { UserStore } from '../../shared/_services/users.service';
 import data from '../constants/constants.json';
+import { AuthService } from 'src/app/shared/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,20 +13,16 @@ import data from '../constants/constants.json';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private api : RegisterApi,
+  constructor(
               private router :Router,
-              public dialog: MatDialog) { }
+              private userStore : UserStore,
+              public dialog: MatDialog,
+              public authService:AuthService) { 
+              }
 
   ngOnInit() {
-    this.api.getCourseOfStudent()
-    .subscribe(
-      (res)=>{
-      console.log(res),
-      (err)=>{
-      console.error(err);
-      }
-    })
-
+    const use = this.userStore.getUser();
+    console.log(use);
     }
 
   

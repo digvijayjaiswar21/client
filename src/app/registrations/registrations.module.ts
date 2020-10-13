@@ -7,13 +7,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import { RegisterApi } from 'src/api/register.api';
 import { RegistrationsRoutingModule } from './registrations-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from '../shared/api.service';
 import { AuthService } from '../shared/auth.service';
-import { AuthInterceptor } from '../_helper/auth.interceptor';
+import { AuthInterceptor } from '../../_helper/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserStore } from '../shared/_services/users.service';
 @NgModule({
   declarations: [RegistrationsComponent, LoginComponent],
   imports: [
@@ -33,6 +33,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   providers: [ApiService,
               AuthService,
+              UserStore,
             {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
           ],
   exports:[

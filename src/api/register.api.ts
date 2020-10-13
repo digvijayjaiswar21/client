@@ -1,12 +1,6 @@
-import {
-  environment
-} from '../environments/environment';
-import {
-  map
-} from 'rxjs/operators';
-import {
-  HttpClient
-} from '@angular/common/http';
+import {environment} from '../environments/environment';
+import {map} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 import {
   Injectable
 } from '@angular/core';
@@ -28,7 +22,7 @@ export class RegisterApi {
 
   constructor(private api: ApiService) {}
 
-  getUser(item): Observable < Object > {
+  getUser(item): Observable <Object> {
     try{
     return this.api.post(`auth`, item).
     pipe(map((response: Response) => {
@@ -42,7 +36,7 @@ export class RegisterApi {
   }
 
 
-  getCourseOfStudent(): Observable < Object > {
+  getUserDetails(): Observable < Object > {
     try {
       return this.api.get(`users/me`).
       pipe(map((response: Response) => {
@@ -54,7 +48,7 @@ export class RegisterApi {
     }
   }
 
-  registerUser(item): Observable < any > {
+  registerUser(item): Observable <any> {
     try {
       return this.api.post(`users`, item).
       pipe(map((response: any) => {
@@ -68,7 +62,7 @@ export class RegisterApi {
 
   createCourse(params):Observable<Course>{
     try {
-      return this.api.post(`course/createCourse`, params).
+      return this.api.post(`course`, params).
       pipe(map((response: any) => {
         return response.json();
        })

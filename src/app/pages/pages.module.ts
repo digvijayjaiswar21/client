@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { AddCourseComponent } from './admin/admin-dialogs/add-courses/add-courses.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
     imports: [PagesRoutingModule,
       MatSidenavModule,

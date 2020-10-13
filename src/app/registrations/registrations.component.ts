@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterApi } from 'src/api/register.api';
 import {AuthService} from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { UserStore } from '../shared/_services/users.service';
  
 
 @Component({
@@ -16,6 +17,7 @@ export class RegistrationsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private registrationApi :RegisterApi,
               private router :Router,
+              private userStore : UserStore,
               private auth :AuthService)
                { 
                        this.register();
@@ -54,6 +56,7 @@ export class RegistrationsComponent implements OnInit {
   .subscribe(
   (data)=> {
      this.auth.setToken(data['token']);
+     this.userStore.setUser(data['user']);
      this.router.navigate(['/pages/dashboard']);
   },
   (err)=>{

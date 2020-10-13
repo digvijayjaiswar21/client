@@ -1,4 +1,7 @@
 import { OnInit, Component } from '@angular/core';
+import { RegisterApi } from 'src/api/register.api';
+import { UserStore } from '../shared/_services/users.service';
+import { Users } from '../shared/models/users';
 
 @Component({
     selector: 'app-pages',
@@ -41,12 +44,20 @@ import { OnInit, Component } from '@angular/core';
   </mat-sidenav-container>`
   })
 export class PagesComponent implements OnInit{
-
-    constructor(){
-
+user :any;
+    constructor(private api : RegisterApi,
+                private userStore : UserStore ){
+      this.api.getUserDetails()
+      .subscribe(
+        (res)=>{
+        this.user = res;
+        this.userStore.setUser(this.user);
+        (err)=>{
+        console.error(err);
+        }
+      })
     }
 
     ngOnInit(){
-
     }
 }
