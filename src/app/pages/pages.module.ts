@@ -11,9 +11,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { AddCourseComponent } from './admin/admin-dialogs/add-courses/add-courses.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UploadComponent } from './admin/admin-dialogs/uploads/upload.component';
 @NgModule({
-    imports: [PagesRoutingModule,
+    imports: [
+      PagesRoutingModule,
       MatSidenavModule,
       MatIconModule,
       MatListModule,
@@ -26,8 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       ReactiveFormsModule,
       MatIconModule
     ],
-    declarations:[PagesComponent, DashboardComponent, CourseComponent,AddCourseComponent],
-    entryComponents:[AddCourseComponent],
+    declarations:[ PagesComponent, DashboardComponent, CourseComponent,AddCourseComponent,UploadComponent],
+    entryComponents:[ AddCourseComponent, UploadComponent],
     exports: [RouterModule]
   })
   

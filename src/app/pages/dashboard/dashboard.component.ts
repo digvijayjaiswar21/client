@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterApi } from 'src/api/register.api';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AddCourseComponent, AddCourse } from '../admin/admin-dialogs/add-courses/add-courses.component';
 import { UserStore } from '../../shared/_services/users.service';
 import data from '../constants/constants.json';
 import { AuthService } from 'src/app/shared/auth.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

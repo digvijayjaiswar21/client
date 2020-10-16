@@ -46,11 +46,8 @@ courseForm:FormGroup;
     })
     this.dialogRef.close();
   }
- 
-
-
 }
 
 export class AddCourse{
-    constructor(public title:string,public message:string,public content?:string){}
+    constructor(public title:string, public message:string, public content?:string){}
 }

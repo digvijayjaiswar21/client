@@ -33,8 +33,7 @@ import { UserStore } from '../shared/_services/users.service';
   ],
   providers: [ApiService,
               AuthService,
-              UserStore,
-            {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+              UserStore
           ],
   exports:[
     MatInputModule,

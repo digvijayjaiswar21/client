@@ -7,7 +7,6 @@ Injectable({
 
 export class UserStore{
 public user:Users;
-public sum :any;
 
  getUser(): Users {
  const storedUser: Users = JSON.parse(localStorage.getItem('user')); ;

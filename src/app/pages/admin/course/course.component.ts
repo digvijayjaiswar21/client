@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { UploadComponent, UploadCourse } from '../admin-dialogs/uploads/upload.component';
 
 @Component({
   selector: 'app-course',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  uploadCourseImg(){
+    let dialogRef = this.dialog.open(UploadComponent, {
+      width: '25%',
+      height:'28%',
+      data: new UploadCourse('Upload Course Image','@@')
+    });
+
+    dialogRef.afterClosed();
   }
 
 }
