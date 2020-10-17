@@ -55,6 +55,7 @@ export class RegistrationsComponent implements OnInit {
   this.registrationApi.getUser(payload)
   .subscribe(
   (data)=> {
+    console.log('@@@@@@@@@@@@ ',data)
      this.auth.setToken(data['token']);
      this.userStore.setUser(data['user']);
      this.router.navigate(['/pages/dashboard']);

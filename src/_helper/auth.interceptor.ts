@@ -1,20 +1,24 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest,HttpEvent} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../app/shared/auth.service';
+import { tap } from "rxjs/operators";
 const TOKEN_HEADER_KEY = 'x-auth-token';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-    constructor(private authService : AuthService){}
+export class AuthInterceptor implements HttpInterceptor{
+    constructor(private auth : AuthService){}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.authService.getToken() != null) {
-           req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
-           req = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, this.authService.getToken()) });
-           req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
-           return next.handle(req);
+        let authReq = req;
+        const token = this.auth.getToken();
+        if (token != null) {
+        authReq = req.clone({headers : req.headers.append('Content-Type', 'application/json')
+                                  .append(TOKEN_HEADER_KEY,this.auth.getToken())
+                                  .append('Accept', 'application/json')})
         }
+        return next.handle(authReq);
+
     }
 
 }

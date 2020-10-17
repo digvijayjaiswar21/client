@@ -11,7 +11,7 @@ import { ApiService } from './shared/api.service';
 import {AuthService} from './shared/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../_helper/auth.interceptor';
+import { AuthInterceptor, authInterceptorProviders } from '../_helper/auth.interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegistrationsModule } from './registrations/registrations.module';
 import { PagesModule } from './pages/pages.module';
@@ -37,7 +37,7 @@ import { HeadersComponent } from '../app/headers/headers.component';
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers:[{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}]
+  providers:[authInterceptorProviders]
 })
 export class AppModule { }
 

@@ -20,13 +20,14 @@ import { Course } from 'src/app/shared/models/course';
 })
 export class RegisterApi {
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,
+              private http :HttpClient) {}
 
   getUser(item): Observable <Object> {
     try{
     return this.api.post(`auth`, item).
     pipe(map((response: Response) => {
-      return response.json();
+      return response;
       })
      );
     }
@@ -40,7 +41,7 @@ export class RegisterApi {
     try {
       return this.api.get(`users/me`).
       pipe(map((response: Response) => {
-        return response.json();
+        return response;
        })
       );
     } catch (error) {
@@ -52,7 +53,7 @@ export class RegisterApi {
     try {
       return this.api.post(`users`, item).
       pipe(map((response: any) => {
-        return response.json();
+        return response;
        })
       );
     } catch (error) {
@@ -64,7 +65,7 @@ export class RegisterApi {
     try {
       return this.api.post(`course`, params).
       pipe(map((response: any) => {
-        return response.json();
+        return response;
        })
       );
     } catch (error) {
